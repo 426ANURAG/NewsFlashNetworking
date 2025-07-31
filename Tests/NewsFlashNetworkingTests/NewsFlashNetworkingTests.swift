@@ -3,12 +3,12 @@ import XCTest
 
 final class NewsFlashNetworkingTests: XCTestCase {
     var mockSession: MockSession!
-    var networkManager: NetworkManager!
+    var networkManager: NFNetworkManager!
     
     override func setUp() {
         super.setUp()
         mockSession = MockSession()
-        networkManager = NetworkManager(
+        networkManager = NFNetworkManager(
             environment: .mock,
             session: mockSession
         )
