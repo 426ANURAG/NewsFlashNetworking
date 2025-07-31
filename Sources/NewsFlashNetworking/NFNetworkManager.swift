@@ -8,16 +8,16 @@
 import Foundation
 
 // Define your NetworkManager as an actor to ensure thread safety
-public actor NetworkManager {
+public actor NFNetworkManager {
     
     // Singleton shared instance of NetworkManager using actor
-    private static var _shared: NetworkManager?
+    private static var _shared: NFNetworkManager?
     
-    public static var shared: NetworkManager {
+    public static var shared: NFNetworkManager {
         get async {
             // This ensures the shared instance is lazily initialized in a thread-safe manner
             if _shared == nil {
-                _shared = NetworkManager()
+                _shared = NFNetworkManager()
             }
             return _shared!
         }
