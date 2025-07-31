@@ -16,7 +16,7 @@ A modular networking package for Swift that supports environments, async/await, 
 2. Go to **File > Add Packages**
 3. Paste this repo URL:
 
-https://github.com/YOUR_USERNAME/NewsFlashNetworking.git
+https://github.com/426ANURAG/NewsFlashNetworking.git
 
 4. Select the version (e.g., `1.0.0`) and add the package to your target.
 
