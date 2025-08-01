@@ -40,10 +40,6 @@ public actor NFNetworkManager {
     
     // Perform API request
     public func request<T: Decodable>(requestData: Networkrequest) async -> Result<T, NetworkError> {
-        // Check for internet connection
-        let internetStatus = await Reachability.shared.currentStatus()
-        guard internetStatus else { return .failure(.noInternetConnection) }
-        
         guard let url = url(for: requestData.endpoint) else { return .failure(.invalidURL)}
         var request = URLRequest(url: url)
         request.httpMethod = requestData.endpoint.method.rawValue
@@ -87,6 +83,4 @@ public enum NetworkError: Error {
     case noData
     case decodingError(Error)
     case encodingError(Error)
-    case noInternetConnection
-    
 }
