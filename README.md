@@ -7,6 +7,7 @@ A modular networking package for Swift that supports environments, async/await, 
 - 🔧 Environment support (dev, staging, prod)
 - ✅ Unit testable with mock sessions
 - ♻️ Designed for VIPER/Clean Architecture
+- 🔌 Built-in Reachability support using Swift Concurrency (`actor`, `AsyncStream`)
 
 ## 📦 Installation
 
@@ -36,3 +37,48 @@ case .success(let data):
 case .failure(let error):
     print(error)
 }
+```
+---
+
+## 🔌 Reachability Support
+
+The package includes an `actor`-based Reachability utility that detects internet connectivity in real time using `NWPathMonitor`.
+
+### ✅ Start Monitoring
+
+Start it once when your app launches:
+
+```swift
+Task {
+    await Reachability.shared.startMonitoring()
+}
+```
+
+🔁 Listen for Network Changes
+No closures needed — use AsyncStream:
+
+```swift
+Task {
+    for await isConnected in await Reachability.shared.statusStream() {
+        print("Network is \(isConnected ? "Connected" : "Disconnected")")
+    }
+}
+```
+
+📶 Check Current Status
+```swift
+let online = await Reachability.shared.currentStatus()
+```
+
+🧪 Unit Testing
+NetworkManager is initialized with a mockable URLSession for testing API logic.
+
+🛠 Requirements
+iOS 13+
+
+Swift 5.7+
+
+Xcode 14+
+
+🧾 License
+MIT License. See LICENSE for details.
