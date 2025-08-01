@@ -1,5 +1,5 @@
 //
-//  NewsM.swift
+//  NewsSection.swift
 //  NewsFlashNetworking
 //
 //  Created by Anurag Sharma on 31/07/25.
